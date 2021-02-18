@@ -2,9 +2,13 @@
 @tailwind base;
 @tailwind components;
 
-.column {
+.column1 {
     float: left;
-    width: 30%;
+    width: 20%;
+}
+
+.column2 {
+    width: auto;
 }
 
 .row::after {
@@ -16,7 +20,7 @@
 
 
 .taskBtn {
-    @apply flex mx-auto text-white bg-green-500 border-0 py-2 px-8 hover:bg-green-600 rounded text-lg;
+    @apply flex mx-auto text-white bg-blue-300 border-0 py-2 px-8 hover:bg-blue-500 rounded text-lg;
 }
 
 @tailwind utilities;
