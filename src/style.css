@@ -1,0 +1,23 @@
+
+@tailwind base;
+@tailwind components;
+
+.column {
+    float: left;
+    width: 30%;
+}
+
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+    
+} 
+
+
+.taskBtn {
+    @apply flex mx-auto text-white bg-green-500 border-0 py-2 px-8 hover:bg-green-600 rounded text-lg;
+}
+
+@tailwind utilities;
+
