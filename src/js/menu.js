@@ -1,4 +1,4 @@
-const menuSection = () => { 
+const menuSection = () => {
     const div1 = document.createElement('div');
     div1.className = 'flex justify-center items-center text-gray-600 text-base font-medium';
     const div2 = document.createElement('div');
@@ -15,7 +15,7 @@ const menuSection = () => {
 
     div1.append(div2, div3, addBtn);
 
-    return div1;
+    return { div1, addBtn } ;
 }
 
 export default menuSection;

@@ -24,17 +24,23 @@ const addProjectForm = () => {
     input.setAttribute('type', 'text');
     input.setAttribute('id', 'projectName')
     const div6 = document.createElement('div');
-    div6.className = 'px-4 py-3 text-right sm:px-6';
+    div6.className = 'px-4 py-3 text-right sm:px-6 flex justify-between';
     const submitBtn = document.createElement('button');
-    submitBtn.className = 'inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500';
+    submitBtn.className = 'inline-flex justify-center mr-3 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500';
     submitBtn.textContent = 'Save Project';
     submitBtn.setAttribute('type', 'button');
+    
+    const cancelBtn = document.createElement('button');
+    cancelBtn.className = 'inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500';
+    cancelBtn.textContent = 'Cancel';
+    cancelBtn.setAttribute('type', 'button');
+
 
     container.append(form, div1, div2, div3, div4, div5, div6);
     div4.append(label);
-    div6.append(submitBtn);
+    div6.append(submitBtn, cancelBtn);
 
-    return container, submitBtn;
+    return { container, submitBtn };
 
 }
 
