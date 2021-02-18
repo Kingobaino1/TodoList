@@ -16,7 +16,17 @@ module.exports = {
           'css-loader',
           'postcss-loader',
         ],
-      }
+      },
+      {
+        test: /\.(png|jpeg|jpg|svg|gif|mov|mp4)$/i,
+        use: {
+          loader: 'file-loader',
+          options: {
+            outputPath: 'media',
+            name: '[name].[ext]',
+          },
+        },
+      },
     ]
   }
 }
