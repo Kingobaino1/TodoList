@@ -23,5 +23,17 @@
     @apply flex mx-auto text-white bg-blue-300 border-0 py-2 px-8 hover:bg-blue-500 rounded text-lg;
 }
 
+.addProjectBtn {
+    @apply px-8 py-2 font-semibold text-white transition duration-500 ease-in-out transform rounded-lg focus:outline-none focus:ring-2 ring-offset-current ring-offset-2;
+}
+
+.addProjectForm {
+    @apply flex flex-col bg-white w-full p-8 mx-auto mt-10 border rounded-lg lg:w-2/6 md:w-1/2 md:ml-auto md:mt-0;
+}
+
+.addProjectInput {
+    @apply w-full px-4 py-2 mb-4 text-black bg-gray-100 border-transparent rounded-lg mr-4 text-base;
+}
+
 @tailwind utilities;
 
