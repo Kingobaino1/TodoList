@@ -30,7 +30,12 @@ const addProjectForm = () => {
     div1.append(input);
 
 
-    return { container, submitBtn };
+    return {
+        container,
+        submitBtn,
+        cancelBtn,
+        input
+    };
 
 }
 
