@@ -5,6 +5,7 @@ import menuSection from './js/menu';
 import addProjectForm from './js/projectForm';
 import FormField from './js/formField';
 import Storage from './js/storage';
+import card  from './js/card';
 
 const {
   projects,
@@ -12,10 +13,12 @@ const {
   populateData
 } = Storage();
 
+
 const { div1, addBtn } = menuSection();
 let { container, submitBtn, cancelBtn, input } = addProjectForm()
 
 const content = document.querySelector('#content');
+content.appendChild(card());
 
 const showProjectForm = () => {
   content.appendChild(container)
