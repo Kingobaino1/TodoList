@@ -2,9 +2,6 @@
 import down from '../img/chevron-down.png';
 import plus from '../img/plus.png';
 import bullet from '../img/bullet.png';
-import Storage from './storage';
-
-const{projects} = Storage();
 
 const menuSection = () => { 
 
@@ -34,19 +31,23 @@ const menuSection = () => {
     add.src = plus;
 
     const listProj = document.createElement('div');
-     for (let i = 0; i < projects.length; i += 1) {
+
+    for (let i = 0; i < localStorage.length; i += 1) {
+        const key = localStorage.key(i);
         let containerList = document.createElement('div');
-        containerList.className = 'flex';
+        containerList.className = 'flex cursor-pointer mt-1';
+        containerList.id = localStorage.key(i).toLowerCase().replace(/[^a-zA-Z0-9]+/g, "");
+        ;
         const spanList = document.createElement('span');
-        spanList.textContent = `${projects[i]}` //Put the varable of localstorage to loop here
+        spanList.textContent = `${key}` //Put the varable of localstorage to loop here
         const bulletImg = document.createElement('img');
         bulletImg.className = 'ml-5 mr-3 mt-2.5 h-1.5 w-1.5';
         bulletImg.src = bullet;
 
         listProj.append(containerList);
         containerList.append(bulletImg, spanList);
-     }
-
+    }
+    
     div1.append(div2, listProj);
     div2.append(nav);
     nav.append(span1, ul);

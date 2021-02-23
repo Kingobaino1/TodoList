@@ -15,6 +15,7 @@ const Storage = () => {
     saveLocal,
     populateData
   }
-};
+} 
+ 
 
 export default Storage;

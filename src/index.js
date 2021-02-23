@@ -17,21 +17,25 @@ let { container, submitBtn, cancelBtn, input } = addProjectForm()
 
 const content = document.querySelector('#content');
 
-
 const showProjectForm = () => {
   content.appendChild(container)
+  //content.className = 'block';
 };
 
 const submitForm = () => {
   let name = FormField(input.value);
-  projects.push(name);
-  saveLocal();
-  populateData();
+  console.log('line 27', input.value);
+  //projects.push(name);
+  localStorage.setItem(name, '');
+  console.log(projects)
+  // saveLocal();
+  // populateData();
+  menuSection;
 };
 
 const cancelForm = () => {
   container.className = 'hidden';
-  window.location.reload();
+  //window.location.reload();
 };
 
 let main = document.getElementById('navigation');

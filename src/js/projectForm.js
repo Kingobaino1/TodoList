@@ -24,7 +24,6 @@ const addProjectForm = () => {
     cancelBtn.textContent = 'Cancel';
     cancelBtn.setAttribute('type', 'button');
 
-
     container.append(form);
     form.append(div1, submitBtn, cancelBtn);
     div1.append(input);
