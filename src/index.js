@@ -36,6 +36,14 @@ const submitForm = () => {
   menuSection;
 };
 
+function getID(clicked_id) {
+  alert(clicked_id)
+  // const list = localstorage(key).value;
+  // if (e.target === list) {
+  //   console.log(list)
+  // }
+}
+
 const cancelForm = () => {
   container.className = 'hidden';
   //window.location.reload();
@@ -50,4 +58,10 @@ menuDiv.appendChild(div1);
 addBtn.addEventListener('click', showProjectForm)
 submitBtn.addEventListener('click', submitForm);
 cancelBtn.addEventListener('click', cancelForm);
+
+// let projectTask = document.getElementsByClassName('btnListPro');
+// let buttonsTest = Object.values(projectTask);
+// console.log(buttonsTest)
+// buttonsTest.forEach(element => element.addEventListener('click', getID(element)));
+
 
