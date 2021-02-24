@@ -54,11 +54,13 @@ const addNewTaskForm = () => {
     span_select.className = 'absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center';
     span_select.innerHTML = '<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>';
 
+    const btnDiv = document.createElement('div');
+    btnDiv.className = 'p-2 w-full';
     const button = document.createElement('button');
     button.className = 'btnAddTask';
     button.textContent = 'Add New Task'
 
-    divTaskForm.append(divInput, divInput1, divInput2, divInput3);
+    divTaskForm.append(divInput, divInput1, divInput2, divInput3, btnDiv);
     divInput.append(div3);
     div3.append(input1);
     divInput1.append(div5);
@@ -67,9 +69,10 @@ const addNewTaskForm = () => {
     div7.append(label1, input3);
     divInput3.append(div9);
     div9.append(label2, div_select);
-    div_select.append(div_select1, span_select);
-    div_select1.append(select);
+    div_select.append(div_select1);
+    div_select1.append(select, span_select);
     select.append(option1, option2, option3);
+    btnDiv.append(button);
 
     return divTaskForm;
 }

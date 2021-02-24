@@ -10,7 +10,7 @@ const taskHTML = () => {
     div1.className = '-my-8 divide-y-2 divide-gray-100';
 
     const containerNewTask = document.createElement('div');
-    containerNewTask.className = 'lg:w-1/2 md:w-2/3 mx-auto mb-10';
+    containerNewTask.className = 'lg:w-1/2 md:w-2/3 mx-auto mb-10 hidden';
 
     //Loop from here
     const div2 = document.createElement('div');

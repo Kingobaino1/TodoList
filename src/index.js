@@ -6,7 +6,6 @@ import addProjectForm from './js/projectForm';
 import FormField from './js/formField';
 import Storage from './js/storage';
 import taskHTML from './js/taskDisplay'
-import card  from './js/card';
 import addNewTaskForm from './js/addNewTaskForm'
 
 
@@ -30,9 +29,7 @@ const { div1, addBtn } = menuSection();
 let { container, submitBtn, cancelBtn, input } = addProjectForm()
 
 const content = document.querySelector('#content');
-// content.appendChild(card());
-
-
+containerNewTask.append(addNewTaskForm());
 
 const showProjectForm = () => {
   content.appendChild(container)
@@ -66,12 +63,13 @@ function getID(e) {
 }
 
 const newTask = () => {
-  containerNewTask.appendChild(addNewTaskForm());
+  
   if(containerNewTask.className === 'hidden'){
     containerNewTask.className = 'block';
+  } else {
+    containerNewTask.className = 'hidden';
   }
 }
-
 
 const cancelForm = () => {
   container.style.display = 'none';
@@ -87,7 +85,7 @@ menuDiv.appendChild(div1);
 addBtn.addEventListener('click', showProjectForm)
 submitBtn.addEventListener('click', submitForm);
 cancelBtn.addEventListener('click', cancelForm);
-btnNewTask.addEventListener('click', newTask)
+btnNewTask.addEventListener('click', newTask);
 
 let projectTask = document.getElementsByClassName('btnListPro');
 let buttonsTest = Object.values(projectTask);
