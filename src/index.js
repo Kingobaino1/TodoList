@@ -14,7 +14,10 @@ const {
   populateData
 } = Storage();
 
-
+const {
+  div,
+  div3
+} = navBar();
 const { div1, addBtn } = menuSection();
 let { container, submitBtn, cancelBtn, input } = addProjectForm()
 
@@ -45,12 +48,15 @@ const submitForm = () => {
 
 function getID(e) {
   let idElement = e.target.parentNode.id;
+  div3.textContent = idElement;
   alert(idElement)
+
   // const list = localstorage(key).value;
   // if (e.target === list) {
   //   console.log(list)
   // }
 }
+
 
 const cancelForm = () => {
   container.style.display = 'none';
@@ -58,7 +64,7 @@ const cancelForm = () => {
 };
 
 let main = document.getElementById('navigation');
-main.appendChild(navBar());
+main.appendChild(div);
 
 let menuDiv = document.getElementById('menu');
 menuDiv.appendChild(div1);
