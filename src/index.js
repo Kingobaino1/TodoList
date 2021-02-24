@@ -5,7 +5,7 @@ import menuSection from './js/menu';
 import addProjectForm from './js/projectForm';
 import FormField from './js/formField';
 import Storage from './js/storage';
-import listHTML from './js/listDisplay'
+import taskHTML from './js/taskDisplay'
 import card  from './js/card';
 
 const {
@@ -24,7 +24,7 @@ let { container, submitBtn, cancelBtn, input } = addProjectForm()
 const content = document.querySelector('#content');
 // content.appendChild(card());
 
-content.append(listHTML())
+content.append(taskHTML())
 
 const showProjectForm = () => {
   content.appendChild(container)
@@ -72,11 +72,6 @@ menuDiv.appendChild(div1);
 addBtn.addEventListener('click', showProjectForm)
 submitBtn.addEventListener('click', submitForm);
 cancelBtn.addEventListener('click', cancelForm);
-
-let x = document.getElementById('btnList');
-let y = Array.from(x.children);
-
-console.log('y', y)
 
 let projectTask = document.getElementsByClassName('btnListPro');
 let buttonsTest = Object.values(projectTask);
