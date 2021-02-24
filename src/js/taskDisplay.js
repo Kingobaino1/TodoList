@@ -1,4 +1,4 @@
-import addNewTaskForm from './addNewTaskForm';
+// import addNewTaskForm from './addNewTaskForm';
 
 const taskHTML = () => {
     const mainList = document.createElement('section');
@@ -40,13 +40,17 @@ const taskHTML = () => {
     mainList.append(div1);
     
     div1.append(btnNewTask, containerNewTask, div2);
-    containerNewTask.append(addNewTaskForm());
+    // containerNewTask.append(addNewTaskForm());
     div2.append(div3, div4);
     div3.append(span1, span2);
     div4.append(h1, p, a);
 
     
-    return mainList;
+    return {
+        mainList,
+        containerNewTask,
+        btnNewTask
+    }
 }
 
 export default taskHTML;
