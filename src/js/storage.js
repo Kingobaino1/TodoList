@@ -16,6 +16,5 @@ const Storage = () => {
     populateData
   }
 } 
- 
 
 export default Storage;

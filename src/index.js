@@ -49,7 +49,7 @@ const content = document.querySelector('#content');
 containerNewTask.append(divTaskForm);
 
 let taskObj = [];
-let idElement
+let idElement;
 
 const showProjectForm = () => {
   content.appendChild(container)
@@ -123,5 +123,3 @@ let buttonsTest = Object.values(projectTask);
 console.log(buttonsTest);
 buttonsTest.forEach(element => element.addEventListener('click', (e) => {console.log(e.target.parentNode.id)}));
 buttonsTest.forEach(element => {element.addEventListener('click', getID )});
-
-// console.log(loop());
