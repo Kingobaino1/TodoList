@@ -76,7 +76,11 @@ const addNewTaskForm = () => {
 
     return {
         divTaskForm,
-        button
+        button,
+        input1,
+        input2,
+        input3,
+        select
     }
 }
 

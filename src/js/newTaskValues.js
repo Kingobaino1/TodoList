@@ -1,4 +1,4 @@
-const taskValues = (task, description, date, priority) => {
+const TaskValues = (task, description, date, priority) => {
   return {
     task,
     description,
@@ -7,4 +7,4 @@ const taskValues = (task, description, date, priority) => {
   }
 };
 
-export default taskValues;
+export default TaskValues;

@@ -7,7 +7,7 @@ import FormField from './js/formField';
 import Storage from './js/storage';
 import taskHTML from './js/taskDisplay'
 import addNewTaskForm from './js/addNewTaskForm'
-import taskValues from './js/newTaskValues';
+import TaskValues from './js/newTaskValues';
 
 
 const {
@@ -25,7 +25,11 @@ const {
 
 const {
   divTaskForm,
-  button
+  button,
+  input1,
+  input2,
+  input3,
+  select
 } = addNewTaskForm();
 
 const {
@@ -44,7 +48,8 @@ let { container, submitBtn, cancelBtn, input } = addProjectForm()
 const content = document.querySelector('#content');
 containerNewTask.append(divTaskForm);
 
-let taskObj = {};
+let taskObj = [];
+let idElement
 
 const showProjectForm = () => {
   content.appendChild(container)
@@ -67,7 +72,7 @@ const submitForm = () => {
 };
 
 function getID(e) {
-  let idElement = e.target.parentNode.id;
+  idElement = e.target.parentNode.id;
   div3.textContent = idElement;
   content.append(mainList);
 
@@ -85,9 +90,15 @@ const newTask = () => {
   }
 };
 
+
 const addTask = () => {
-  let task = taskValues(task.value, description.value, date.value, priority.value)
-  console.log(task)
+  let task = TaskValues(input1.value, input2.value, input3.value, select.value)
+  taskObj.push(task);
+  localStorage.setItem(idElement, taskObj);
+};
+
+const loop = () => {
+  addTask().forEach(obj => obj)
 }
 
 const cancelForm = () => {
@@ -112,3 +123,5 @@ let buttonsTest = Object.values(projectTask);
 console.log(buttonsTest);
 buttonsTest.forEach(element => element.addEventListener('click', (e) => {console.log(e.target.parentNode.id)}));
 buttonsTest.forEach(element => {element.addEventListener('click', getID )});
+
+// console.log(loop());

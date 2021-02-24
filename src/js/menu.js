@@ -38,8 +38,8 @@ const menuSection = () => {
         let containerList = document.createElement('div');
         // containerList.setAttribute('onClick', 'getID(this.id)');
         containerList.className = 'flex cursor-pointer mt-1 btnListPro';
-        containerList.id = localStorage.key(i).toLowerCase().replace(/[^a-zA-Z0-9]+/g, "");
-        
+        // containerList.id = localStorage.key(i).toLowerCase().replace(/[^a-zA-Z0-9]+/g, "");
+        containerList.id = localStorage.key(i);
         const spanList = document.createElement('span');
         spanList.textContent = `${key}` //Put the varable of localstorage to loop here
         const bulletImg = document.createElement('img');
