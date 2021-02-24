@@ -5,6 +5,7 @@ import menuSection from './js/menu';
 import addProjectForm from './js/projectForm';
 import FormField from './js/formField';
 import Storage from './js/storage';
+import listHTML from './js/listDisplay'
 import card  from './js/card';
 
 const {
@@ -18,11 +19,17 @@ const { div1, addBtn } = menuSection();
 let { container, submitBtn, cancelBtn, input } = addProjectForm()
 
 const content = document.querySelector('#content');
-content.appendChild(card());
+// content.appendChild(card());
+
+content.append(listHTML())
 
 const showProjectForm = () => {
   content.appendChild(container)
-  //content.className = 'block';
+  if (container.style.display === 'none') {
+    container.style.display = 'block';
+  } else {
+    container.style.display = 'none';
+  }
 };
 
 const submitForm = () => {
@@ -33,11 +40,12 @@ const submitForm = () => {
   console.log(projects)
   // saveLocal();
   // populateData();
-  menuSection;
+  container.style.display = 'none';
 };
 
-function getID(clicked_id) {
-  alert(clicked_id)
+function getID(e) {
+  let idElement = e.target.parentNode.id;
+  alert(idElement)
   // const list = localstorage(key).value;
   // if (e.target === list) {
   //   console.log(list)
@@ -45,7 +53,7 @@ function getID(clicked_id) {
 }
 
 const cancelForm = () => {
-  container.className = 'hidden';
+  container.style.display = 'none';
   //window.location.reload();
 };
 
@@ -59,9 +67,13 @@ addBtn.addEventListener('click', showProjectForm)
 submitBtn.addEventListener('click', submitForm);
 cancelBtn.addEventListener('click', cancelForm);
 
-// let projectTask = document.getElementsByClassName('btnListPro');
-// let buttonsTest = Object.values(projectTask);
-// console.log(buttonsTest)
-// buttonsTest.forEach(element => element.addEventListener('click', getID(element)));
+let x = document.getElementById('btnList');
+let y = Array.from(x.children);
 
+console.log('y', y)
 
+let projectTask = document.getElementsByClassName('btnListPro');
+let buttonsTest = Object.values(projectTask);
+console.log(buttonsTest);
+// buttonsTest.forEach(element => element.addEventListener('click', (e) => {console.log(e.target.parentNode.id)}));
+// buttonsTest.forEach(element => {element.addEventListener('click', getID )});

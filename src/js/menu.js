@@ -31,11 +31,12 @@ const menuSection = () => {
     add.src = plus;
 
     const listProj = document.createElement('div');
+    listProj.id = 'btnList';
 
     for (let i = 0; i < localStorage.length; i += 1) {
         const key = localStorage.key(i);
-        let containerList = document.createElement('button');
-        containerList.setAttribute('onClick', 'getID(this.id)');
+        let containerList = document.createElement('div');
+        // containerList.setAttribute('onClick', 'getID(this.id)');
         containerList.className = 'flex cursor-pointer mt-1 btnListPro';
         containerList.id = localStorage.key(i).toLowerCase().replace(/[^a-zA-Z0-9]+/g, "");
         
