@@ -74,7 +74,10 @@ const addNewTaskForm = () => {
     select.append(option1, option2, option3);
     btnDiv.append(button);
 
-    return divTaskForm;
+    return {
+        divTaskForm,
+        button
+    }
 }
 
 export default addNewTaskForm;

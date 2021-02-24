@@ -7,6 +7,7 @@ import FormField from './js/formField';
 import Storage from './js/storage';
 import taskHTML from './js/taskDisplay'
 import addNewTaskForm from './js/addNewTaskForm'
+import taskValues from './js/newTaskValues';
 
 
 const {
@@ -14,6 +15,18 @@ const {
   saveLocal,
   populateData
 } = Storage();
+
+// const {
+//   task,
+//   description,
+//   date,
+//   priority
+// } = taskValues();
+
+const {
+  divTaskForm,
+  button
+} = addNewTaskForm();
 
 const {
   mainList,
@@ -29,7 +42,9 @@ const { div1, addBtn } = menuSection();
 let { container, submitBtn, cancelBtn, input } = addProjectForm()
 
 const content = document.querySelector('#content');
-containerNewTask.append(addNewTaskForm());
+containerNewTask.append(divTaskForm);
+
+let taskObj = {};
 
 const showProjectForm = () => {
   content.appendChild(container)
@@ -63,12 +78,16 @@ function getID(e) {
 }
 
 const newTask = () => {
-  
   if(containerNewTask.className === 'hidden'){
     containerNewTask.className = 'block';
   } else {
     containerNewTask.className = 'hidden';
   }
+};
+
+const addTask = () => {
+  let task = taskValues(task.value, description.value, date.value, priority.value)
+  console.log(task)
 }
 
 const cancelForm = () => {
@@ -86,6 +105,7 @@ addBtn.addEventListener('click', showProjectForm)
 submitBtn.addEventListener('click', submitForm);
 cancelBtn.addEventListener('click', cancelForm);
 btnNewTask.addEventListener('click', newTask);
+button.addEventListener('click', addTask);
 
 let projectTask = document.getElementsByClassName('btnListPro');
 let buttonsTest = Object.values(projectTask);
