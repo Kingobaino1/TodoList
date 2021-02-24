@@ -1,6 +1,6 @@
 import logo from '../img/logo.png'
 
-const navBar = () => {
+const navBar = (btnClic) => {
     const div1 = document.createElement('div');
     div1.className = 'container flex justify-between items-center mx-auto py-4';
 
@@ -12,15 +12,8 @@ const navBar = () => {
     const div3 = document.createElement('div');
     div3.textContent = 'Project Name';
 
-    const div4 = document.createElement('div');
-
-    const taskBut = document.createElement('button');
-    taskBut.className = 'taskBtn';
-    taskBut.textContent = 'New Task';
-
-    div1.append(div2, div3, div4);
+    div1.append(div2, div3);
     div2.append(img);
-    div4.append(taskBut);
 
     return div1
 }
