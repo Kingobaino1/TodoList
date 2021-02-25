@@ -1,14 +1,16 @@
 // import addNewTaskForm from './addNewTaskForm';
-import taskCard from './projects';
+// import taskCard from './projects';
+
+// const { div2 } = taskCard();
 
 const taskHTML = () => {
     const mainList = document.createElement('section');
     mainList.className = 'container px-5 mt-12 mx-auto';
-    const div1 = document.createElement('div');
+    const div11 = document.createElement('div');
     const btnNewTask = document.createElement('button');
     btnNewTask.className = 'w-full mb-8 text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg';
     btnNewTask.textContent = 'New Task';
-    div1.className = '-my-8 divide-y-2 divide-gray-100';
+    div11.className = '-my-8 divide-y-2 divide-gray-100';
 
     const containerNewTask = document.createElement('div');
     containerNewTask.className = 'lg:w-1/2 md:w-2/3 mx-auto mb-10 hidden';
@@ -38,9 +40,9 @@ const taskHTML = () => {
     // a.textContent = 'Status: Complete';
     // a.innerHTML = '<svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>';
 
-    mainList.append(div1);
+    mainList.append(div11);
     
-    div1.append(btnNewTask, containerNewTask, taskCard());
+    div11.append(btnNewTask, containerNewTask);
     // containerNewTask.append(addNewTaskForm());
     // div2.append(div3, div4);
     // div3.append(span1, span2);
@@ -51,6 +53,7 @@ const taskHTML = () => {
         mainList,
         containerNewTask,
         btnNewTask,
+        div11,
     }
 }
 

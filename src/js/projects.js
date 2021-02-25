@@ -1,23 +1,26 @@
 const taskCard = (id) => {
-  const div2 = document.createElement('div');
+  let div2;
+  let storage = JSON.parse(localStorage.getItem(id));
+  for(let i = 0; i < storage.length; i++){
+    div2 = document.createElement('div');
     div2.className = 'py-8 flex flex-wrap md:flex-nowrap';
     const div3 = document.createElement('div');
     div3.className = 'md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col';
     const span1 = document.createElement('span');
     span1.className = 'font-semibold title-font text-gray-700';
-    span1.textContent = 'Priority';
+    span1.textContent = storage[i].priority;
     const span2 = document.createElement('span');
     span2.className = 'mt-1 text-gray-500 text-sm';
-    span2.textContent = 'Feb 28, 2021';
+    span2.textContent = storage[i].date;
 
     const div4 = document.createElement('div');
     div4.className = 'md:flex-grow';
     const h1 = document.createElement('h2');
     h1.className = 'text-2xl font-medium text-gray-900 title-font mb-2';
-    h1.textContent = 'Project Name Title';
+    h1.textContent = storage[i].task;
     const p = document.createElement('p');
     p.className = 'leading-relaxed';
-    p.textContent = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac mauris non leo blandit condimentum. Nunc sit amet risus ex.';
+    p.textContent = storage[i].description;
     const a = document.createElement('a');
     a.className = 'text-indigo-500 inline-flex items-center mt-4';
     a.textContent = 'Status: Complete';
@@ -25,7 +28,8 @@ const taskCard = (id) => {
     div2.append(div3, div4);
     div3.append(span1, span2);
     div4.append(h1, p, a);
-    return div2;
+  }
+    return div2
    
 }
 

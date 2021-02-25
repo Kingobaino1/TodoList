@@ -8,6 +8,8 @@ import Storage from './js/storage';
 import taskHTML from './js/taskDisplay'
 import addNewTaskForm from './js/addNewTaskForm'
 import TaskValues from './js/newTaskValues';
+import taskCard from './js/projects';
+
 
 
 const {
@@ -15,6 +17,7 @@ const {
   saveLocal,
   populateData
 } = Storage();
+
 
 // const {
 //   task,
@@ -35,7 +38,8 @@ const {
 const {
   mainList,
   containerNewTask,
-  btnNewTask
+  btnNewTask,
+  div11
 } = taskHTML();
 
 const {
@@ -48,7 +52,7 @@ let { container, submitBtn, cancelBtn, input } = addProjectForm()
 const content = document.querySelector('#content');
 containerNewTask.append(divTaskForm);
 
-let taskObj = {};
+let taskObj = [];
 let idElement;
 
 const showProjectForm = () => {
@@ -69,7 +73,7 @@ const clearProjectForm = () => {
 
 const submitForm = () => {
   let name = FormField(input.value);
-  console.log('line 27', input.value);
+  //console.log('line 27', input.value);
   //projects.push(name);
   localStorage.setItem(name, '');
   console.log(projects)
@@ -85,7 +89,8 @@ function getID(e) {
   idElement = e.target.parentNode.id;
   div3.textContent = idElement;
   content.append(mainList);
-
+  div11.append(taskCard(idElement))
+  taskCard(idElement);
   // const list = localstorage(key).value;
   // if (e.target === list) {
   //   console.log(list)
@@ -100,14 +105,14 @@ const newTask = () => {
   }
 };
 
-
 const addTask = () => {
   let task = TaskValues(input1.value, input2.value, input3.value, select.value)
-  localStorage.setItem(idElement, JSON.stringify(task));
-  const display = JSON.parse(localStorage.getItem(idElement));
-  taskObj[idElement] = display;
-  console.log(taskObj);
+  taskObj.push(task);
+  localStorage.setItem(idElement, JSON.stringify(taskObj));
   clearProjectForm();
+  div11.append(taskCard(idElement))
+  taskCard(idElement);
+
 };
 
 
@@ -116,6 +121,12 @@ const cancelForm = () => {
   container.style.display = 'none';
   //window.location.reload();
 };
+
+const loop = () => {
+  display.forEach((obj) => {
+   
+  })
+}
 
 let main = document.getElementById('navigation');
 main.appendChild(div);
