@@ -48,7 +48,7 @@ let { container, submitBtn, cancelBtn, input } = addProjectForm()
 const content = document.querySelector('#content');
 containerNewTask.append(divTaskForm);
 
-let taskObj = [];
+let taskObj = {};
 let idElement;
 
 const showProjectForm = () => {
@@ -60,6 +60,13 @@ const showProjectForm = () => {
   }
 };
 
+const clearProjectForm = () => {
+  input1.value = '';
+  input2.value = '';
+  input3.value = '';
+  select.value = 'Important';
+}
+
 const submitForm = () => {
   let name = FormField(input.value);
   console.log('line 27', input.value);
@@ -69,7 +76,10 @@ const submitForm = () => {
   // saveLocal();
   // populateData();
   container.style.display = 'none';
+  window.location.reload();
 };
+
+
 
 function getID(e) {
   idElement = e.target.parentNode.id;
@@ -93,13 +103,14 @@ const newTask = () => {
 
 const addTask = () => {
   let task = TaskValues(input1.value, input2.value, input3.value, select.value)
-  taskObj.push(task);
-  localStorage.setItem(idElement, taskObj);
+  localStorage.setItem(idElement, JSON.stringify(task));
+  const display = JSON.parse(localStorage.getItem(idElement));
+  taskObj[idElement] = display;
+  console.log(taskObj);
+  clearProjectForm();
 };
 
-const loop = () => {
-  addTask().forEach(obj => obj)
-}
+
 
 const cancelForm = () => {
   container.style.display = 'none';
@@ -120,6 +131,6 @@ button.addEventListener('click', addTask);
 
 let projectTask = document.getElementsByClassName('btnListPro');
 let buttonsTest = Object.values(projectTask);
-console.log(buttonsTest);
+// console.log(buttonsTest);
 buttonsTest.forEach(element => element.addEventListener('click', (e) => {console.log(e.target.parentNode.id)}));
 buttonsTest.forEach(element => {element.addEventListener('click', getID )});
