@@ -10,7 +10,6 @@ const addNewTaskForm = () => {
     input1.setAttribute('type', 'text');
     input1.setAttribute('placeholder', 'What will you do?');
 
-
     const divInput1 = document.createElement('div');
     divInput1.className = 'p-2 w-1/2';
     const div5 = document.createElement('div');

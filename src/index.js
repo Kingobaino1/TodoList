@@ -62,7 +62,7 @@ const showProjectForm = () => {
 
 const submitForm = () => {
   let name = FormField(input.value);
-  console.log('line 27', input.value);
+  //console.log('line 27', input.value);
   //projects.push(name);
   localStorage.setItem(name, '');
   console.log(projects)
@@ -90,11 +90,10 @@ const newTask = () => {
   }
 };
 
-
 const addTask = () => {
   let task = TaskValues(input1.value, input2.value, input3.value, select.value)
   taskObj.push(task);
-  localStorage.setItem(idElement, taskObj);
+  localStorage.setItem(idElement, JSON.stringify(taskObj));
 };
 
 const loop = () => {
