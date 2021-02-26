@@ -3,28 +3,20 @@ import './style.css';
 import navBar from './js/navBar';
 import menuSection from './js/menu';
 import addProjectForm from './js/projectForm';
-import FormField from './js/formField';
+//import FormField from './js/formField';
 import Storage from './js/storage';
-import taskHTML from './js/taskDisplay'
+import taskDisplay from './js/taskDisplay'
 import addNewTaskForm from './js/addNewTaskForm'
 import TaskValues from './js/newTaskValues';
 import taskCard from './js/projects';
-
-
+import showHide from './js/showHidde';
+import projectList from './js/projectList'
 
 const {
   projects,
   saveLocal,
   populateData
 } = Storage();
-
-
-// const {
-//   task,
-//   description,
-//   date,
-//   priority
-// } = taskValues();
 
 const {
   divTaskForm,
@@ -35,33 +27,32 @@ const {
   select
 } = addNewTaskForm();
 
-const {
-  mainList,
-  containerNewTask,
-  btnNewTask,
-  div11
-} = taskHTML();
+let {
+  container,
+  submitBtn,
+  cancelBtn,
+  input
+} = addProjectForm()
 
-const {
-  div,
-  div3
-} = navBar();
-const { div1, addBtn } = menuSection();
-let { container, submitBtn, cancelBtn, input } = addProjectForm()
-
-const content = document.querySelector('#content');
-containerNewTask.append(divTaskForm);
-
+// Global variables
 let taskObj = [];
 let idElement;
 
+//layout
+const content = document.querySelector('#content');
+
+let menuDiv = document.getElementById('menu');
+menuDiv.append(menuSection());
+
+let listDiv = document.getElementById('listProjectDiv');
+listDiv.append(projectList());
+
+let main = document.getElementById('navigation');
+main.appendChild(navBar());
+
 const showProjectForm = () => {
-  content.appendChild(container)
-  if (container.style.display === 'none') {
-    container.style.display = 'block';
-  } else {
-    container.style.display = 'none';
-  }
+  content.append(container)
+  showHide(container);
 };
 
 const clearProjectForm = () => {
@@ -72,47 +63,49 @@ const clearProjectForm = () => {
 }
 
 const submitForm = () => {
-  let name = FormField(input.value);
-  //console.log('line 27', input.value);
-  //projects.push(name);
+  let name = input.value;
   localStorage.setItem(name, '');
-  console.log(projects)
-  // saveLocal();
-  // populateData();
   container.style.display = 'none';
-  window.location.reload();
+  
+  const btnList = document.getElementById('btnList');
+  btnList.innerHTML = '';
+  btnList.append(projectList());
+  input.value = '';
 };
-
-
 
 function getID(e) {
   idElement = e.target.parentNode.id;
-  div3.textContent = idElement;
-  content.append(mainList);
-  div11.append(taskCard(idElement))
-  taskCard(idElement);
-  // const list = localstorage(key).value;
-  // if (e.target === list) {
-  //   console.log(list)
-  // }
+  //NavBar project name set
+  const projectname = document.getElementById('selectedProject');
+  projectname.textContent = idElement;
+
+  content.innerHTML = '';
+  content.append(taskDisplay());
+  const taskListContainer = document.getElementById('taskListContainer');
+  taskListContainer.append(taskCard(idElement))
+  //taskCard(idElement);
+
+  let btnNewTaskForm = document.getElementById('showNewTaskForm');
+  btnNewTaskForm.addEventListener('click', newTask);
 }
 
-const newTask = () => {
-  if(containerNewTask.className === 'hidden'){
-    containerNewTask.className = 'block';
-  } else {
-    containerNewTask.className = 'hidden';
-  }
-};
+function newTask() {
+  const displayForm = document.getElementById('taskFormDisplay');
+  displayForm.append(divTaskForm);
+  showHide(displayForm);
+}
+
+
 
 const addTask = () => {
-  let task = TaskValues(input1.value, input2.value, input3.value, select.value)
+  let task = TaskValues(input1.value, input2.value, input3.value, select.value);
   taskObj.push(task);
+  console.log(taskObj)
   localStorage.setItem(idElement, JSON.stringify(taskObj));
   clearProjectForm();
-  div11.append(taskCard(idElement))
+  const taskListContainer = document.getElementById('taskListContainer');
+  taskListContainer.append(taskCard(idElement));
   taskCard(idElement);
-
 };
 
 
@@ -124,24 +117,26 @@ const cancelForm = () => {
 
 const loop = () => {
   display.forEach((obj) => {
-   
+
   })
 }
 
-let main = document.getElementById('navigation');
-main.appendChild(div);
+// All actions for buttons
+let addProject = document.getElementById('addProjectBtn');
+addProject.addEventListener('click', showProjectForm);
 
-let menuDiv = document.getElementById('menu');
-menuDiv.appendChild(div1);
-
-addBtn.addEventListener('click', showProjectForm)
 submitBtn.addEventListener('click', submitForm);
 cancelBtn.addEventListener('click', cancelForm);
-btnNewTask.addEventListener('click', newTask);
+
 button.addEventListener('click', addTask);
 
 let projectTask = document.getElementsByClassName('btnListPro');
+
 let buttonsTest = Object.values(projectTask);
-// console.log(buttonsTest);
-buttonsTest.forEach(element => element.addEventListener('click', (e) => {console.log(e.target.parentNode.id)}));
-buttonsTest.forEach(element => {element.addEventListener('click', getID )});
+// buttonsTest.forEach(element => element.addEventListener('click', (e) => {
+//   console.log(e.target.parentNode.id)
+// }));
+
+buttonsTest.forEach(element => {
+  element.addEventListener('click', getID);
+});

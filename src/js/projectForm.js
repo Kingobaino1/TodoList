@@ -1,6 +1,7 @@
 const addProjectForm = () => {
     const container = document.createElement('div');
-    container.className = 'container px-8 pt-48 pb-24 mx-auto lg:px-4 modal';
+    container.className = 'container px-8 pt-48 pb-24 mx-auto lg:px-4 modal shadow-md';
+    container.setAttribute('style', 'display: none');
 
     const form = document.createElement('form');
     form.className = 'addProjectForm';

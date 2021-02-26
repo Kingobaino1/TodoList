@@ -10,15 +10,14 @@ const navBar = (btnClic) => {
     img.src = logo;
 
     const div3 = document.createElement('div');
-    // div3.textContent = projectName();
+    div3.id = 'selectedProject';
+    div3.className = 'font-semibold text-blue-400 text-xl'
+    div3.textContent = 'No project selected';
 
     div.append(div2, div3);
     div2.append(img);
 
-    return {
-        div,
-        div3
-    }
+    return div;
 }
 
 export default navBar;

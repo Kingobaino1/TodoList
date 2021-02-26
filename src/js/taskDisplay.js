@@ -1,19 +1,25 @@
 // import addNewTaskForm from './addNewTaskForm';
 // import taskCard from './projects';
-
+// import showNewTaskForm from './showNewTaskForm'
 // const { div2 } = taskCard();
 
-const taskHTML = () => {
+const taskDisplay = () => {
     const mainList = document.createElement('section');
     mainList.className = 'container px-5 mt-12 mx-auto';
+
     const div11 = document.createElement('div');
+    div11.className = '-my-8 divide-y-2 divide-gray-100';
+    div11.id = 'taskListContainer';
+
     const btnNewTask = document.createElement('button');
     btnNewTask.className = 'w-full mb-8 text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg';
-    btnNewTask.textContent = 'New Task';
-    div11.className = '-my-8 divide-y-2 divide-gray-100';
-
+    btnNewTask.textContent = 'Add New Task';
+    btnNewTask.id = 'showNewTaskForm'
+    
     const containerNewTask = document.createElement('div');
-    containerNewTask.className = 'lg:w-1/2 md:w-2/3 mx-auto mb-10 hidden';
+    containerNewTask.className = 'lg:w-1/2 md:w-2/3 mx-auto mb-10';
+    containerNewTask.setAttribute('style', 'display: none');
+    containerNewTask.id = 'taskFormDisplay';
 
     //Loop from here
     // const div2 = document.createElement('div');
@@ -49,12 +55,13 @@ const taskHTML = () => {
     // div4.append(h1, p, a);
 
     
-    return {
-        mainList,
-        containerNewTask,
-        btnNewTask,
-        div11,
-    }
+    // return {
+    //     mainList,
+    //     btnNewTask,
+    //     div11,
+    // }
+
+    return mainList;
 }
 
-export default taskHTML;
+export default taskDisplay;
