@@ -1,7 +1,9 @@
 const taskCard = (id) => {
   let divList = document.createElement('div');
 
-  if (localStorage.getItem(id).length === 0) {
+console.log(localStorage.getItem(id));
+
+  if ( localStorage.getItem(id) === null ) {
     const note = document.createElement('div');
     note.className = 'h-20 bg-yellow-400 text-2xl text-center text-white font-bold pt-5';
     note.textContent = 'This is a new project. Please Add a New Task'

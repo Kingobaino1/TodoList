@@ -73,29 +73,46 @@ const submitForm = () => {
   input.value = '';
 };
 
-function getID(e) {
+const selectProject = (e) => {
   idElement = e.target.parentNode.id;
-  //NavBar project name set
+  console.log('e.target.parentNode.id', e.target.parentNode.id, 'e.target.nodeName.id', e.target.nodeName.id)
+  // console.log('idElement', idElement)
+  changeProjectNavBar(idElement);
+  showTask(idElement);
+  return idElement;
+}
+
+const changeProjectNavBar = (idElement) => {
   const projectname = document.getElementById('selectedProject');
   projectname.textContent = idElement;
+}
 
+const showTask = (idElement) => {
+  const projectname = document.getElementById('selectedProject');
+  projectname.textContent = idElement;
   content.innerHTML = '';
   content.append(taskDisplay());
   const taskListContainer = document.getElementById('taskListContainer');
   taskListContainer.append(taskCard(idElement))
-  //taskCard(idElement);
-
-  let btnNewTaskForm = document.getElementById('showNewTaskForm');
-  btnNewTaskForm.addEventListener('click', newTask);
-
-  // let deleteTask = document.getElementById('deleteTask');
-  // deleteTask.addEventListener('click', deleteTaskItem);
-  let deleteBtnTask = document.getElementsByClassName('deleteBtnTask');
-  let buttonsDeleteTask = Object.values(deleteBtnTask);
-  buttonsDeleteTask.forEach(element => {
-    element.addEventListener('click', deleteTaskItem);
-  });
 }
+
+// const projectname = document.getElementById('selectedProject');
+// projectname.textContent = idElement;
+//   content.innerHTML = '';
+//   content.append(taskDisplay());
+//   const taskListContainer = document.getElementById('taskListContainer');
+//   taskListContainer.append(taskCard(idElement))
+//   //taskCard(idElement);
+
+//   let btnNewTaskForm = document.getElementById('showNewTaskForm');
+//   btnNewTaskForm.addEventListener('click', newTask);
+
+//   let deleteBtnTask = document.getElementsByClassName('deleteBtnTask');
+//   let buttonsDeleteTask = Object.values(deleteBtnTask);
+//   buttonsDeleteTask.forEach(element => {
+//     element.addEventListener('click', deleteTaskItem);
+//   });
+
 
 const newTask = () => {
   const displayForm = document.getElementById('taskFormDisplay');
@@ -108,36 +125,24 @@ const deleteTaskItem = (e) => {
   const delkey = deleteElement.getAttribute("key");
   const deletePos = deleteElement.getAttribute("position");
 
-  console.log('key: ', delkey, 'Position: ', deletePos)
   let existingEntries = JSON.parse(localStorage.getItem(delkey));
   existingEntries.splice(deletePos, 1);
   existingEntries = JSON.stringify(existingEntries);
   localStorage.setItem(delkey, existingEntries);
+  selectProject();
 }
 
 const addTask = () => {
   let task = TaskValues(input1.value, input2.value, input3.value, select.value);
   taskObj.push(task);
-  console.log(taskObj)
   localStorage.setItem(idElement, JSON.stringify(taskObj));
   clearProjectForm();
-  const taskListContainer = document.getElementById('taskListContainer');
-  taskListContainer.append(taskCard(idElement));
-  taskCard(idElement);
 };
-
-
 
 const cancelForm = () => {
   container.style.display = 'none';
   //window.location.reload();
 };
-
-const loop = () => {
-  display.forEach((obj) => {
-
-  })
-}
 
 // All actions for buttons
 let addProject = document.getElementById('addProjectBtn');
@@ -149,7 +154,9 @@ cancelBtn.addEventListener('click', cancelForm);
 button.addEventListener('click', addTask);
 
 let projectTask = document.getElementsByClassName('btnListPro');
+
 let buttonsAddProject = Object.values(projectTask);
+console.log('projecTask', projectTask, 'buttonsAddProject', buttonsAddProject)
 buttonsAddProject.forEach(element => {
-  element.addEventListener('click', getID);
+  element.addEventListener('click', selectProject);
 });
