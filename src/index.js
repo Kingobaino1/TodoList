@@ -87,27 +87,33 @@ function getID(e) {
 
   let btnNewTaskForm = document.getElementById('showNewTaskForm');
   btnNewTaskForm.addEventListener('click', newTask);
-  let deleteTask = document.getElementById('deleteTask');
-  deleteTask.addEventListener('click', deleteTaskItem);
+
+  // let deleteTask = document.getElementById('deleteTask');
+  // deleteTask.addEventListener('click', deleteTaskItem);
+  let deleteBtnTask = document.getElementsByClassName('deleteBtnTask');
+  let buttonsDeleteTask = Object.values(deleteBtnTask);
+  buttonsDeleteTask.forEach(element => {
+    element.addEventListener('click', deleteTaskItem);
+  });
 }
 
-function newTask() {
+const newTask = () => {
   const displayForm = document.getElementById('taskFormDisplay');
   displayForm.append(divTaskForm);
   showHide(displayForm);
 }
 
-function deleteTaskItem(e) {
+const deleteTaskItem = (e) => {
   const deleteElement = e.target;
   const delkey = deleteElement.getAttribute("key");
   const deletePos = deleteElement.getAttribute("position");
 
-  const existingEntries = JSON.parse(localStorage.getItem(delkey));
+  console.log('key: ', delkey, 'Position: ', deletePos)
+  let existingEntries = JSON.parse(localStorage.getItem(delkey));
   existingEntries.splice(deletePos, 1);
-  localStorage.setItem(delkey, JSON.stringify(existingEntries));
+  existingEntries = JSON.stringify(existingEntries);
+  localStorage.setItem(delkey, existingEntries);
 }
-
-
 
 const addTask = () => {
   let task = TaskValues(input1.value, input2.value, input3.value, select.value);
@@ -143,12 +149,7 @@ cancelBtn.addEventListener('click', cancelForm);
 button.addEventListener('click', addTask);
 
 let projectTask = document.getElementsByClassName('btnListPro');
-
-let buttonsTest = Object.values(projectTask);
-// buttonsTest.forEach(element => element.addEventListener('click', (e) => {
-//   console.log(e.target.parentNode.id)
-// }));
-
-buttonsTest.forEach(element => {
+let buttonsAddProject = Object.values(projectTask);
+buttonsAddProject.forEach(element => {
   element.addEventListener('click', getID);
 });

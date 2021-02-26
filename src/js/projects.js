@@ -2,14 +2,12 @@ const taskCard = (id) => {
   let divList = document.createElement('div');
 
   if (localStorage.getItem(id).length === 0) {
-    console.log('Entre al true')
     const note = document.createElement('div');
     note.className = 'h-20 bg-yellow-400 text-2xl text-center text-white font-bold pt-5';
     note.textContent = 'This is a new project. Please Add a New Task'
     divList.append(note);
     return divList;
   } else {
-    console.log('Entre al false')
   let storage = JSON.parse(localStorage.getItem(id));
 
   for(let i = 0; i < storage.length; i += 1){
@@ -33,8 +31,9 @@ const taskCard = (id) => {
     separator.className = 'mx-3';
     separator.textContent = '|';
     const erase = document.createElement('div');
-    erase.id = 'deleteTask';
-    erase.className = 'text-red-600 cursor-pointer';
+    // erase.id = 'deleteTask';
+    // erase.setAttribute('onClick', 'deleteTaskItem()');
+    erase.className = 'text-red-600 cursor-pointer deleteBtnTask';
     erase.textContent = 'Delete'
     erase.setAttribute('key', id);
     erase.setAttribute('position', i);
