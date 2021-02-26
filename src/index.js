@@ -66,7 +66,7 @@ const submitForm = () => {
   let name = input.value;
   localStorage.setItem(name, '');
   container.style.display = 'none';
-  
+
   const btnList = document.getElementById('btnList');
   btnList.innerHTML = '';
   btnList.append(projectList());
@@ -87,12 +87,24 @@ function getID(e) {
 
   let btnNewTaskForm = document.getElementById('showNewTaskForm');
   btnNewTaskForm.addEventListener('click', newTask);
+  let deleteTask = document.getElementById('deleteTask');
+  deleteTask.addEventListener('click', deleteTaskItem);
 }
 
 function newTask() {
   const displayForm = document.getElementById('taskFormDisplay');
   displayForm.append(divTaskForm);
   showHide(displayForm);
+}
+
+function deleteTaskItem(e) {
+  const deleteElement = e.target;
+  const delkey = deleteElement.getAttribute("key");
+  const deletePos = deleteElement.getAttribute("position");
+
+  const existingEntries = JSON.parse(localStorage.getItem(delkey));
+  existingEntries.splice(deletePos, 1);
+  localStorage.setItem(delkey, JSON.stringify(existingEntries));
 }
 
 

@@ -1,6 +1,15 @@
 const taskCard = (id) => {
   let divList = document.createElement('div');
 
+  if (localStorage.getItem(id).length === 0) {
+    console.log('Entre al true')
+    const note = document.createElement('div');
+    note.className = 'h-20 bg-yellow-400 text-2xl text-center text-white font-bold pt-5';
+    note.textContent = 'This is a new project. Please Add a New Task'
+    divList.append(note);
+    return divList;
+  } else {
+    console.log('Entre al false')
   let storage = JSON.parse(localStorage.getItem(id));
 
   for(let i = 0; i < storage.length; i += 1){
@@ -15,6 +24,21 @@ const taskCard = (id) => {
     span2.className = 'mt-1 text-gray-500 text-sm';
     span2.textContent = storage[i].date;
 
+    const actions = document.createElement('div');
+    actions.className = 'mt-3 flex text-sm font-semibold';
+    const edit = document.createElement('div');
+    edit.className = 'text-gray-600 cursor-pointer';
+    edit.textContent = 'Edit';
+    const separator = document.createElement('div');
+    separator.className = 'mx-3';
+    separator.textContent = '|';
+    const erase = document.createElement('div');
+    erase.id = 'deleteTask';
+    erase.className = 'text-red-600 cursor-pointer';
+    erase.textContent = 'Delete'
+    erase.setAttribute('key', id);
+    erase.setAttribute('position', i);
+
     const div4 = document.createElement('div');
     div4.className = 'md:flex-grow';
     const h1 = document.createElement('h2');
@@ -23,18 +47,15 @@ const taskCard = (id) => {
     const p = document.createElement('p');
     p.className = 'leading-relaxed';
     p.textContent = storage[i].description;
-    const a = document.createElement('a');
-    a.className = 'text-indigo-500 inline-flex items-center mt-4';
-    a.textContent = 'Status Complete';
-    a.innerHTML = '<svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>';
 
     divList.append(div2);
     div2.append(div3, div4);
-    div3.append(span1, span2);
-    div4.append(h1, p, a);
+    div3.append(span1, span2, actions);
+    actions.append(edit, separator, erase);
+    div4.append(h1, p);
   }
     return divList;
-   
+  }
 }
 
 export default taskCard;
