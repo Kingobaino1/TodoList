@@ -1,26 +1,24 @@
-import bullet from '../img/bullet.png';
+const projectList = () => { 
 
-const projectList = () => {
-    const listProj = document.createElement('div');
-    listProj.className = 'mt-7';
-    listProj.id = 'btnList';
+    const projectListDiv = document.createElement('div');
+    projectListDiv.className = 'antialiased w-full';
+
+    const listProj = document.createElement('ul');
+    listProj.className = 'list-disc list-inside mt-7 ml-8 text-lg';
 
     for (let i = 0; i < localStorage.length; i += 1) {
         const key = localStorage.key(i);
-        let containerList = document.createElement('div');
-        containerList.className = 'flex cursor-pointer mt-1 btnListPro';
-        containerList.id = localStorage.key(i);
-        const spanList = document.createElement('span');
-        spanList.textContent = `${key}` //Put the varable of localstorage to loop here
-        const bulletImg = document.createElement('img');
-        bulletImg.className = 'ml-5 mr-3 mt-2.5 h-1.5 w-1.5';
-        bulletImg.src = bullet;
+        let li = document.createElement('li');
+        li.className = 'cursor-pointer mt-1 btnListPro text-blue-900 btn-List';
+        li.id = localStorage.key(i);
+        li.textContent = `${key}` //Put the varable of localstorage to loop here
 
-        listProj.append(containerList);
-        containerList.append(bulletImg, spanList);
+        listProj.append(li);
     }
 
-    return listProj;
+    projectListDiv.append(listProj);
+
+    return projectListDiv;
 }
 
 export default projectList;
